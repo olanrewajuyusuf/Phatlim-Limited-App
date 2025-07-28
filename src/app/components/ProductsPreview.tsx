@@ -91,8 +91,8 @@ export default function ProductsPreview() {
                 className="w-full h-56 object-cover"
               />
               <div className="p-5">
-                <h3 className="text-xl font-semibold text-brand-blue dark:text-brand-yellow mb-2">{product.name}</h3>
-                <p className="text-sm text-gray-700 dark:text-gray-300">{product.description}</p>
+                <h3 className="text-xl font-semibold text-white mb-2">{product.name}</h3>
+                <p className="text-sm text-gray-300">{product.description}</p>
               </div>
             </motion.div>
           ))}
