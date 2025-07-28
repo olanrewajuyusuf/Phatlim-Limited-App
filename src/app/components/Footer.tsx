@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Mail, Phone } from 'lucide-react';
+import Logo from './Logo';
 
 export default function Footer() {
   return (
@@ -14,7 +15,7 @@ export default function Footer() {
         viewport={{ once: true }}
       >
         <div className="text-center md:text-left">
-          <h2 className="text-xl font-bold text-brand-yellow">Phatlim Ventures</h2>
+          <div className='flex justify-center md:justify-start mb-5'><Link href='/'><Logo /></Link></div>
           <p className="text-sm mt-2">Supplying premium truck parts across Africa.</p>
           <p className="text-sm mt-1">© {new Date().getFullYear()} All rights reserved.</p>
         </div>
@@ -26,7 +27,7 @@ export default function Footer() {
             <Link href="/products" className="hover:underline hover:text-brand-yellow transition">Products</Link>
             <Link href="#contact" className="hover:underline hover:text-brand-yellow transition">Contact</Link>
           </div>
-          <span className='flex items-center justify-center md:justify-start gap-3 text-sm my-3.5'><Mail /> phatlimventures@gmail.com</span>
+          <span className='flex items-center justify-center md:justify-start gap-3 text-sm my-3.5'><Mail /> phatlimlimited@gmail.com</span>
           <span className='flex items-center justify-center md:justify-start gap-3 text-sm'><Phone /> +234 703 551 2244</span>
         </div>
       </motion.div>

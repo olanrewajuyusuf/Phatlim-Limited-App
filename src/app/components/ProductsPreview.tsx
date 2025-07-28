@@ -52,7 +52,7 @@ export default function ProductsPreview() {
             transition={{ duration: 0.6, delay: 0.1 }}
             viewport={{ once: false }}
           >
-            <FaCartShopping /> Services
+            <FaCartShopping /> Products
           </motion.button>
 
           <motion.h2

@@ -1,7 +1,7 @@
 import Contact from "../components/Contact";
 
 export const metadata = {
-  title: "Contact | Phatlim Limited",
+  title: "Contact",
 };
 
 export default function HomePage() {
