@@ -41,7 +41,7 @@ export default function ClientAbout() {
 
           {/* H2 Heading - animate from right */}
           <motion.h2
-            className="text-7xl md:text-8xl mt-2 md:mt-10 text-blue-950 font-bold"
+            className="text-7xl md:text-8xl mt-2 md:mt-10 text-blue font-bold"
             initial={{ x: 50, opacity: 0 }}
             animate={isVisible ? { x: 0, opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -59,7 +59,7 @@ export default function ClientAbout() {
 
           {/* Second Button - animate from left */}
           <motion.button
-            className="text-white bg-gradient-to-r from-blue-950 to-pink-500 px-4 py-2 rounded-lg mt-5"
+            className="text-white bg-gradient-to-r from-blue to-pink-500 px-4 py-2 rounded-lg mt-5"
             initial={{ x: -50, opacity: 0 }}
             animate={isVisible ? { x: 0, opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -85,7 +85,7 @@ export default function ClientAbout() {
             style={{ backgroundImage: "url(/doc1.jpg)" }}
           />
           
-          <div className="absolute bottom-0 left-0 h-[200px] p-7 rounded-t-3xl bg-white/50 backdrop-blur-md text-black text-xl md:text-2xl z-10">
+          <div className="absolute bottom-0 left-0 h-[160px] p-7 rounded-t-3xl bg-white/50 backdrop-blur-md text-black text-xl md:text-2xl z-10">
             We provide bespoke services to customers depending on their needs. Customers goal is our commitment.
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function ClientAbout() {
             style={{ backgroundImage: "url(/doc2.webp)" }}
           />
           
-          <div className="absolute bottom-0 left-0 h-[200px] p-7 rounded-t-3xl bg-white/50 backdrop-blur-md text-black text-xl md:text-2xl z-10">
+          <div className="absolute bottom-0 left-0 h-[160px] p-7 rounded-t-3xl bg-white/50 backdrop-blur-md text-black text-xl md:text-2xl z-10">
             We provide our customers with O.E.M and best of aftermarkets spares for European, American and Chinese trucks.
           </div>
         </div>

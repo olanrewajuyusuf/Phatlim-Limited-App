@@ -19,7 +19,7 @@ export default function Services() {
     <section 
     className="py-20 relative z-20 min-h-screen overflow-visible"
     style={{
-      background: 'linear-gradient(transparent 0%, #c9d0de 10%)'
+      background: 'linear-gradient(transparent 0%, hsl(0, 0%, 81%) 10%)'
     }}
     id="services"
     >
@@ -42,7 +42,7 @@ export default function Services() {
           </motion.button>
 
           <motion.h2
-            className="text-3xl md:text-6xl mt-5 mb-10 text-blue-950"
+            className="text-3xl md:text-6xl mt-5 mb-10 text-blue"
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}

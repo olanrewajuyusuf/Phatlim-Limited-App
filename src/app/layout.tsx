@@ -1,10 +1,8 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import { Toaster } from 'react-hot-toast';
-
-const inter = Inter({ subsets: ['latin'] })
+import { josefin } from './ui/font';
 
 export const metadata = {
   title: {
@@ -26,7 +24,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className}`}>
+      <body className={`${josefin.className} antialiased`}>
         <Navbar />
         <main className='overflow-hidden'>{children}</main>
         <Footer />

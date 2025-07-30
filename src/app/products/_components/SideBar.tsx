@@ -19,13 +19,13 @@ export default function SideBar() {
         {title: 'Others', link: '/products/categories/others'},
     ]
     return (
-        <nav className="w-[150px] md:w-[300px] h-screen overflow-scroll hide-scrollbar bg-[#f4fcfe] border-r border-[#c9d0de] p-2 md:p-5">
-            <div className="border border-[#c9d0de] rounded-md flex flex-col">
+        <nav className="w-[150px] md:w-[300px] h-screen overflow-scroll hide-scrollbar border-r border-[#c9d0de] p-2 md:p-5">
+            <div className="border border-grey rounded-md flex flex-col">
                 {navlinks.map(nav => (
                     <Link 
                     key={nav.title}
                     href={nav.link}
-                    className={`text-sm md:text-[16px] p-3 border-b border-[#c9d0de] hover:bg-gray-100 ${pathname === nav.link ? 'bg-[#c9d0de]' : 'bg-none'}`}
+                    className={`text-sm md:text-[16px] p-3 border-b border-grey hover:bg-gray-200 ${pathname === nav.link ? 'bg-grey' : 'bg-none'}`}
                     >
                         {nav.title}
                     </Link>

@@ -41,7 +41,7 @@ const products = [
 
 export default function ProductsPreview() {
   return (
-    <section className="py-20 bg-gray-950" id="products">
+    <section className="py-20 bg-blue" id="products">
       <div className="max-w-7xl mx-auto px-4 lg:px-20 xl:px-40">
         <div>
           <motion.button
@@ -56,7 +56,7 @@ export default function ProductsPreview() {
           </motion.button>
 
           <motion.h2
-            className="text-3xl md:text-6xl mt-5 mb-10 text-[#c9d0de]"
+            className="text-3xl md:text-6xl mt-5 mb-10 text-grey"
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -80,7 +80,7 @@ export default function ProductsPreview() {
           {products.map((product, index) => (
             <motion.div
               key={index}
-              className="bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
+              className="bg-blue-ex rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
               whileHover={{ scale: 1.03 }}
             >
               <Image

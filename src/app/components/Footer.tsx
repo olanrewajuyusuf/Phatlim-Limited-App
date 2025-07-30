@@ -6,7 +6,7 @@ import Logo from './Logo';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-10 px-4 lg:px-20 xl:px-40">
+    <footer className="bg-blue-ex text-gray-300 py-10 px-4 lg:px-20 xl:px-40">
       <motion.div
         className="max-w-7xl mx-auto flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start gap-6"
         initial={{ opacity: 0, y: 30 }}

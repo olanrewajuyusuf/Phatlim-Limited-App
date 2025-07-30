@@ -9,9 +9,9 @@ export default function Hero() {
   const pathname = usePathname();
 
   return (
-    <section key={pathname} className="pt-20 md:pt-10 text-white">
+    <section key={pathname} className="pt-20 md:pt-10">
       <motion.div
-        className="md:w-[70%] xl:w-[50%] mx-auto text-center text-blue-950 md:pt-20"
+        className="md:w-[70%] xl:w-[50%] mx-auto text-center text-blue md:pt-20"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -32,7 +32,7 @@ export default function Hero() {
             >Journey</span>
           </motion.h1>
           <motion.p
-            className="mt-4 text-lg text-shadow-pink-400 md:mx-20 md:px-10"
+            className="mt-4 text-lg md:mx-20 md:px-10"
             initial={{ x: -70, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -42,7 +42,7 @@ export default function Hero() {
           </motion.p>
           <Link 
           href='/products'
-          className='w-[250px] relative bg-blue-900 text-white rounded-full px-5 py-3 mx-auto cursor-pointer flex items-center justify-center gap-2 mt-10 border-2 border-blue-950 hover:bg-blue-950 transition-colors duration-300 z-20'
+          className='w-[250px] relative bg-blue text-white rounded-full px-5 py-3 mx-auto cursor-pointer flex items-center justify-center gap-2 mt-10 border-2 border-blue-ex hover:bg-blue-ex hover:border-blue transition-colors duration-300 z-20'
           >
             Explore Our Products 
             <span className='text-2xl'><MdOutlineExplore /></span>

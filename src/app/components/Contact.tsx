@@ -62,7 +62,7 @@ export default function Contact() {
         <div className="flex flex-col md:flex-row justify-center items-center gap-10">
           <motion.a
             href="tel:+2347035512244"
-            className="flex items-center gap-3 bg-[#c9d0de] text-blue-700 px-6 py-3 rounded-full shadow-md hover:bg-gray-100 transition"
+            className="flex items-center gap-3 bg-grey text-blue-700 px-6 py-3 rounded-full shadow-md hover:bg-white transition"
             whileHover={{ scale: 1.05 }}
           >
             <Phone />
@@ -71,7 +71,7 @@ export default function Contact() {
         </div>
         <div className='mt-5'>
           <h3 className='text-center text-blue-900 text-xl underline'>Or</h3>
-          <form onSubmit={handleSubmit} className='bg-[#c9d0de] text-left p-5 mt-5 mx-auto max-w-[600px] rounded-md shadow-lg'>
+          <form onSubmit={handleSubmit} className='bg-grey text-left p-5 mt-5 mx-auto max-w-[600px] rounded-md shadow-lg'>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-2'>
               <div>
                 <label htmlFor="name" className='inline-block text-blue-800 text-sm'>Name</label>
@@ -79,8 +79,8 @@ export default function Contact() {
                 type="text" 
                 name='name'
                 id='name'
-                placeholder='Akin Lewis'
-                className='w-full outline-0 bg-[#f4fcfe] border border-blue-500 rounded-md px-3 py-2 mb-3 placeholder:text-blue-500 text-blue-800' 
+                placeholder='e.g Akin Lewis'
+                className='w-full outline-0 bg-white border border-blue-500 rounded-md px-3 py-2 mb-3 placeholder:text-grey text-blue-800' 
                 />
               </div>
               <div>
@@ -89,8 +89,8 @@ export default function Contact() {
                 type="email" 
                 name='email'
                 id='email'
-                placeholder='akinlewis@mail.com'
-                className='w-full outline-0 bg-[#f4fcfe] border border-blue-500 rounded-md px-3 py-2 mb-3 placeholder:text-blue-500 text-blue-800' 
+                placeholder='e.g akinlewis@mail.com'
+                className='w-full outline-0 bg-white border border-blue-500 rounded-md px-3 py-2 mb-3 placeholder:text-grey text-blue-800' 
                 />
               </div>
             </div>
@@ -100,11 +100,11 @@ export default function Contact() {
             id="message" 
             rows={5}
             placeholder='Pls, put your message...'
-            className='w-full outline-0 bg-[#f4fcfe] border border-blue-500 rounded-md px-3 py-2 mb-5 placeholder:text-blue-500 text-blue-800'
+            className='w-full outline-0 bg-white border border-blue-500 rounded-md px-3 py-2 mb-5 placeholder:text-grey text-blue-800'
             ></textarea>
             <button 
             type='submit' 
-            className='w-full cursor-pointer py-2 bg-gradient-to-r from-blue-700 to-blue-950 text-white rounded-md hover:from-blue-950 hover:to-blue-700'
+            className='w-full cursor-pointer py-2 bg-gradient-to-r from-blue-ex to-blue text-white rounded-md hover:from-blue-950 hover:to-blue-700'
             >
               {loading ? 'Sending...' : 'Submit'}
             </button>

@@ -18,7 +18,7 @@ const brandLogos = [
 
 export default function Brands() {
   return (
-    <section id="brands" className="bg-[#f4fcfe] py-16">
+    <section id="brands" className="bg-white py-16">
       <div className="max-w-7xl mx-auto px-4 lg:px-20 xl:px-40">
         <div>
           <motion.button
@@ -33,7 +33,7 @@ export default function Brands() {
           </motion.button>
           
           <motion.h2
-            className="text-3xl md:text-6xl mt-5 mb-10 text-blue-950"
+            className="text-3xl md:text-6xl mt-5 mb-10 text-blue"
             initial={{ x: 50, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -52,7 +52,7 @@ export default function Brands() {
           <Marquee 
           className='h-[130px] md:h-[170px]'
           gradient={true}
-          gradientColor="#f4fcfe"
+          gradientColor="white"
           pauseOnHover={true}
           >
             {brandLogos.map((brand, index) => (
@@ -76,7 +76,7 @@ export default function Brands() {
           <Marquee 
           className='h-[130px] md:h-[170px]'
           gradient={true}
-          gradientColor="#f4fcfe"
+          gradientColor="white"
           pauseOnHover={true}
           direction="right"
           speed={100}

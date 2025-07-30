@@ -45,15 +45,15 @@ export default function Navbar() {
           <Logo />
         </Link>
 
-        <div className={`hidden md:flex gap-5 ${scrolled ? 'bg-none' : 'bg-blue-900 border-2 border-blue-950'} text-white p-1 rounded-full`}>
+        <div className={`hidden md:flex gap-5 ${scrolled ? 'bg-none' : 'bg-blue border-2 border-blue-ex'} text-grey p-1 rounded-full`}>
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`font-medium transition-colors hover:text-yellow-300 ${
+              className={`font-medium transition-colors hover:text-white hover:bg-blue-900 ${
                 isActive(link.href)
-                  ? 'bg-blue-950 px-6 py-2 rounded-full text-yellow-300'
-                  : 'text-white bg-blue-900 px-6 py-2 rounded-full'
+                  ? 'bg-blue-ex px-6 py-2 rounded-full'
+                  : 'bg-blue px-6 py-2 rounded-full'
               }`}
             >
               {link.label}
@@ -61,7 +61,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className="relative group hidden md:block bg-blue-900 p-3 rounded-full shadow-md hover:bg-red-400 transition">
+        <div className={`relative group hidden md:block border-2 border-blue-ex p-3 rounded-full shadow-md hover:bg-blue-ex hover:border-blue transition ${pathname === '/contact' ? 'bg-blue-ex border-blue' : 'bg-blue'}`}>
           <Link
             href="/contact"
             className=" text-white text-2xl"

@@ -1,9 +1,10 @@
 'use client';
 
-import { FilterIcon, Search, ShoppingCartIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { FaBorderAll } from "react-icons/fa6";
+import { BsCart4 } from "react-icons/bs";
+import { FaBorderAll, FaFilter } from "react-icons/fa6";
+import { FiSearch } from "react-icons/fi";
 import { MdFavorite, MdOutlineCategory } from "react-icons/md";
 
 const navlinksA = [
@@ -11,9 +12,9 @@ const navlinksA = [
   {title: 'Categories', icon: <MdOutlineCategory />, link: '/products/categories'},
 ]
 const navlinksB = [
-  {title: 'Search', icon: <Search />, link: '/products/search'},
-  {title: 'Filter', icon: <FilterIcon />, link: '/products/filter'},
-  {title: 'Cart', icon: <ShoppingCartIcon />, link: '/products/cart'},
+  {title: 'Search', icon: <FiSearch />, link: '/products/search'},
+  {title: 'Filter', icon: <FaFilter />, link: '/products/filter'},
+  {title: 'Cart', icon: <BsCart4 />, link: '/products/cart'},
   {title: 'Favorite', icon: <MdFavorite />, link: '/products/favorite'},
 ]
 
@@ -21,13 +22,13 @@ export default function ProductsNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="flex justify-between items-center gap-5 overflow-scroll hide-scrollbar bg-[#f4fcfe] border-y border-[#c9d0de] px-2 md:px-5">
+    <nav className="text-blue flex justify-between items-center gap-5 overflow-scroll hide-scrollbar border-y border-grey px-2 md:px-5">
       <div className="flex items-center gap-1">
         {navlinksA.map(nav => (
           <Link 
           href={nav.link} 
           key={nav.title}
-          className={`px-3 py-2 rounded-md hover:bg-gray-200 ${pathname === nav.link ? "bg-[#c9d0de]" : "bg-none"} flex items-center gap-2`}
+          className={`px-3 py-2 rounded-md hover:bg-grey hover:text-blue ${pathname === nav.link ? "bg-blue text-grey" : "bg-none"} flex items-center gap-2`}
           >
             <span>{nav.title}</span>
             <span>{nav.icon}</span>
@@ -39,7 +40,7 @@ export default function ProductsNav() {
           <Link 
           href={nav.link} 
           key={nav.title}
-          className="border border-[#c9d0de] rounded-2xl p-2 flex items-center gap-2 my-1"
+          className="border border-grey rounded-2xl p-2 flex items-center gap-1 my-1"
           >
             <span>{nav.title}</span>
             <span>{nav.icon}</span>
