@@ -25,7 +25,7 @@ export default function SideBar() {
                     <Link 
                     key={nav.title}
                     href={nav.link}
-                    className={`text-sm md:text-[16px] p-3 border-b border-grey hover:bg-gray-200 ${pathname === nav.link ? 'bg-grey' : 'bg-none'}`}
+                    className={`text-sm md:text-[16px] p-3 border-b border-grey hover:bg-gray-100 ${pathname === nav.link ? 'bg-grey' : 'bg-none'}`}
                     >
                         {nav.title}
                     </Link>
