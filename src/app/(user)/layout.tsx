@@ -1,8 +1,8 @@
-import './globals.css'
+import '../globals.css'
 import Navbar from '@/app/components/Navbar'
 import Footer from '@/app/components/Footer'
 import { Toaster } from 'react-hot-toast';
-import { josefin } from './ui/font';
+import { josefin } from '../ui/font';
 
 export const metadata = {
   title: {

@@ -7,9 +7,8 @@ export const metadata = {
   title: "Home | Phatlim Limited",
 };
 
-export default function HomePage() {
+export default async function HomePage() {  
   return (
-    
     <div>
       <Hero />
       <Services />
