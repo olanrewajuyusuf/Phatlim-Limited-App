@@ -26,7 +26,6 @@ const eslintConfig = [
       "**/*.config.mjs",
       "**/*.config.ts",
       "src/generated/**",
-      "prisma/**", // Ignore Prisma generated code
     ],
   },
 

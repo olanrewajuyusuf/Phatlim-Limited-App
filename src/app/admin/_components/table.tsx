@@ -1,7 +1,7 @@
 import { formatDateToLocal } from '@/app/_lib/utils';
 import prisma from '@/lib/prisma';
-import { TrashIcon } from 'lucide-react';
 import Image from 'next/image';
+import DeleteProduct from './DeleteProduct';
 
 export default async function ProductsTable({
   query,
@@ -60,10 +60,7 @@ export default async function ProductsTable({
                     <p>{formatDateToLocal(product.createdAt)}</p>
                   </div>
                   <div className="flex justify-end gap-2">
-                    <button type="button" className="rounded-md border p-2 hover:bg-gray-100">
-                      <span className="sr-only">Delete</span>
-                      <TrashIcon className="w-4" />
-                    </button>
+                    <DeleteProduct id={product.id} />
                   </div>
                 </div>
               </div>
@@ -109,11 +106,7 @@ export default async function ProductsTable({
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                      {/* <DeleteInvoice id={product.id} /> */}
-                      <button type="button" className="rounded-md border p-2 hover:bg-gray-100 cursor-pointer">
-                        <span className="sr-only">Delete</span>
-                        <TrashIcon className="w-4" />
-                      </button>
+                      <DeleteProduct id={product.id} />
                     </div>
                   </td>
                 </tr>
