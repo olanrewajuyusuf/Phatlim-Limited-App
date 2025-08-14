@@ -10,7 +10,33 @@ const compat = new FlatCompat({
 });
 
 const eslintConfig = [
+  // Your Next.js + TypeScript recommended rules
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+
+  // Ignore specific files/folders
+  {
+    ignores: [
+      "node_modules",
+      ".next",
+      "dist",
+      "build",
+      ".vercel",
+      "coverage",
+      "**/*.config.js",
+      "**/*.config.mjs",
+      "**/*.config.ts",
+      "src/generated/**",
+      "prisma/**", // Ignore Prisma generated code
+    ],
+  },
+
+  // Optional rules overrides
+  {
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-require-imports": "off",
+    },
+  },
 ];
 
 export default eslintConfig;
