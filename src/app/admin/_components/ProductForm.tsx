@@ -24,8 +24,11 @@ export default function ProductForm() {
     const [error, productAction] = useActionState(addProductAction, []);
     const [selectedCategory, setSelectedCategory] = useState("");
     const [types, setTypes] = useState<string[]>([]);
-    // const err = error.filter((err: any) => err.path[0] === "file");
-    // console.log("Error:", err[0]?.message);
+
+    const errMessage = (str: string) => {
+      const x = error.filter((err: any) => err.path?.[0] === str);
+      return x.length > 0 ? x[0].message : "";
+    }
 
     const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         const categoryName = e.target.value;
@@ -50,11 +53,11 @@ export default function ProductForm() {
           name="name"
           className="w-full px-3 md:px-5 py-2 rounded-md border border-grey text-grey-ex"
         />
-        {/* {error.filter((err: any) => err.path?.[0] === "name").map((err: any, index: number) => (
-          <p key={index} className="text-red-500 text-sm">
-            {err.message}
+        {errMessage("name") && (
+          <p className="text-red-500 text-sm">
+            {errMessage("name")}
           </p>
-        ))} */}
+        )}
       </div>
 
       {/* Category */}
@@ -77,11 +80,11 @@ export default function ProductForm() {
             );
           })}
         </select>
-        {/* {error.filter((err: any) => err.path?.[0] === "category").map((err: any, index: number) => (
-          <p key={index} className="text-red-500 text-sm">
-            {err.message}
+        {errMessage("category") && (
+          <p className="text-red-500 text-sm">
+            {errMessage("category")}
           </p>
-        ))} */}
+        )}
       </div>
 
       {/* Type */}
@@ -111,20 +114,14 @@ export default function ProductForm() {
           name="file"
           className="w-full px-3 md:px-5 py-2 rounded-md border border-grey text-grey-ex"
         />
-        {/* {error.filter((err: any) => err.path?.[0] === "name").map((err: any, index: number) => (
-          <p key={index} className="text-red-500 text-sm">
-            {err.message}
+        {errMessage("file") && (
+          <p className="text-red-500 text-sm">
+            {errMessage("file")}
           </p>
-        ))} */}
+        )}
       </div>
 
       {/* Submit */}
-      {/* <button
-        type="submit"
-        className="bg-blue hover:bg-blue-ex text-white px-5 py-3 mt-3 rounded-md shadow shadow-grey"
-      >
-        Submit
-      </button> */}
       <SubmitButton />
     </form>
   );

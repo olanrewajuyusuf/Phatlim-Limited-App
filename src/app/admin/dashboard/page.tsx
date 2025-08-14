@@ -5,6 +5,8 @@ import Card from "../_components/Card";
 import Search from "../_components/search";
 import Pagination from "@/app/components/pagination";
 import prisma from "@/lib/prisma";
+import { Suspense } from "react";
+import { CardSkeleton, ProductsTableSkeleton } from "@/app/components/skeletons";
 
 export const metadata = {
   title: "Admin-Dashboard",
@@ -30,6 +32,8 @@ export default async function Dashboard(props: {
         },
     });
 
+    const totalCustomers = await prisma.customer.count();
+
     const totalPages = Math.ceil(totalProducts / pageSize);
 
   return (
@@ -46,8 +50,12 @@ export default async function Dashboard(props: {
         </nav>
         <div className="w-full max-w-[900px] mx-auto p-5">
             <div className="grid grid-cols-2 gap-5 text-grey-ex text-lg">
-                <Card title="All Products" amt={100} />
-                <Card title="All Customers" amt={100} />
+                <Suspense fallback={<CardSkeleton />}>
+                    <Card title="All Products" amt={totalProducts} />
+                </Suspense>
+                <Suspense fallback={<CardSkeleton />}>
+                    <Card title="All Customers" amt={totalCustomers} />
+                </Suspense>
             </div>
             <div className="flex justify-between items-center gap-5 my-5">
                 <Search />
@@ -65,7 +73,9 @@ export default async function Dashboard(props: {
                 </Link>
             </div>
 
-            <ProductsTable query={query} currentPage={currentPage} />
+            <Suspense key={query + currentPage} fallback={<ProductsTableSkeleton />}>
+                <ProductsTable query={query} currentPage={currentPage} />
+            </Suspense>
 
             <div className="mt-5 flex w-full justify-center">
                 <Pagination totalPages={totalPages} />
