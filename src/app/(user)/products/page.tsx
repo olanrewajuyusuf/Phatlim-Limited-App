@@ -11,7 +11,6 @@ export default async function ProductsPage({
   const page = Number(searchParams?.page ?? "1");
   const perPage = 30;
 
-  // Prisma filtering (name, type, category)
   const products = await prisma.product.findMany({
     where: {
       OR: [
