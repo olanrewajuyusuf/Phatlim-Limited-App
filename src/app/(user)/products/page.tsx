@@ -2,11 +2,11 @@ import prisma from "@/lib/prisma";
 import ProductCard from "./_components/ProductCard";
 import Pagination from "@/app/components/pagination";
 
-type ProductsPageProps = {
+export default async function ProductsPage({
+  searchParams,
+}: {
   searchParams?: { query?: string; page?: string };
-};
-
-export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+}) {
   const query = searchParams?.query ?? "";
   const page = Number(searchParams?.page ?? "1");
   const perPage = 30;
