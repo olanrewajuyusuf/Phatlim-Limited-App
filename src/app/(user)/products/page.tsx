@@ -3,15 +3,16 @@ import ProductCard from "./_components/ProductCard";
 import Pagination from "@/app/components/pagination";
 
 type ProductsPageProps = {
-  searchParams?: {
+  searchParams?: Promise<{
     query?: string;
     page?: string;
-  };
+  }>;
 };
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const query = searchParams?.query?.toLowerCase() ?? "";
-  const page = Number(searchParams?.page ?? "1");
+  const params = await searchParams; // ✅ await it
+  const query = params?.query?.toLowerCase() ?? "";
+  const page = Number(params?.page ?? "1");
   const perPage = 30;
 
   const products = await prisma.product.findMany({
