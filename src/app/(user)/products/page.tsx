@@ -3,22 +3,21 @@ import ProductCard from "./_components/ProductCard";
 import Pagination from "@/app/components/pagination";
 
 interface ProductsPageProps {
-  searchParams: { query?: string | undefined; page?: string | undefined; };
+  searchParams?: { query?: string; page?: string };
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const params = await searchParams;
-  const query = params.query ?? "";
-  const page = parseInt(params.page ?? "1", 10);
+  const query = searchParams?.query ?? "";
+  const page = parseInt(searchParams?.page ?? "1", 10);
   const perPage = 30;
 
   // Prisma filtering (name, type, category)
   const products = await prisma.product.findMany({
     where: {
       OR: [
-        { name: { contains: query?.toLowerCase() || "" } },
-        { type: { contains: query?.toLowerCase() || "" } },
-        { category: { contains: query?.toLowerCase() || "" } },
+        { name: { contains: query.toLowerCase() } },
+        { type: { contains: query.toLowerCase() } },
+        { category: { contains: query.toLowerCase() } },
       ],
     },
     skip: (page - 1) * perPage,
@@ -28,9 +27,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const totalProducts = await prisma.product.count({
     where: {
       OR: [
-        { name: { contains: query?.toLowerCase() || "" } },
-        { type: { contains: query?.toLowerCase() || "" } },
-        { category: { contains: query?.toLowerCase() || "" } },
+        { name: { contains: query.toLowerCase() } },
+        { type: { contains: query.toLowerCase() } },
+        { category: { contains: query.toLowerCase() } },
       ],
     },
   });
