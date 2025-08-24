@@ -2,20 +2,24 @@ import prisma from "@/lib/prisma";
 import ProductCard from "./_components/ProductCard";
 import Pagination from "@/app/components/pagination";
 
-export default async function ProductsPage(props: {
-  searchParams?: Promise<{ query?: string; page?: string }>;
-}) {
-  const searchParams = await props.searchParams;
-  const query = searchParams?.query || "";
+type ProductsPageProps = {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+};
+
+export default async function ProductsPage({ searchParams }: ProductsPageProps) {
+  const query = searchParams?.query?.toLowerCase() ?? "";
   const page = Number(searchParams?.page ?? "1");
   const perPage = 30;
 
   const products = await prisma.product.findMany({
     where: {
       OR: [
-        { name: { contains: query.toLowerCase() } },
-        { type: { contains: query.toLowerCase() } },
-        { category: { contains: query.toLowerCase() } },
+        { name: { contains: query } },
+        { type: { contains: query } },
+        { category: { contains: query } },
       ],
     },
     skip: Math.max(0, (page - 1) * perPage),
@@ -25,9 +29,9 @@ export default async function ProductsPage(props: {
   const totalProducts = await prisma.product.count({
     where: {
       OR: [
-        { name: { contains: query.toLowerCase() } },
-        { type: { contains: query.toLowerCase() } },
-        { category: { contains: query.toLowerCase() } },
+        { name: { contains: query } },
+        { type: { contains: query } },
+        { category: { contains: query } },
       ],
     },
   });
