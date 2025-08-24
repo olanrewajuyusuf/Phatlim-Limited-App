@@ -1,60 +1,57 @@
-import CategoriesCard from '../_components/CategoriesCard';
+import { Suspense } from "react";
+import { getCategoriesProducts } from "@/app/_lib/data";
+import NoItemsMessage from "../_components/NoItemMessage";
+import CardSkeleton from "../_components/CardSkeleton";
+import CategoriesCard from "../_components/CategoriesCard";
 
-export default function CategoriesPage() {
-    const types = ['Clutch system', 'Transmission', 'Gear box', 'Propeller shaft', 'Rear Axle'];
-    const products = [
-        {
-          name: 'OEM Brake Pads',
-          image: '/images/products/brake-pads.jpg',
-          brand: 'Hengst',
-          type: 'Brake pad',
-        },
-        {
-          name: 'Heavy-duty Filters',
-          image: '/images/products/filter.png',
-          brand: 'Continental',
-          type: 'Air Filter',
-        },
-        {
-          name: 'Truck Tyres',
-          image: '/images/products/tyres.jpg',
-          brand: 'Castro',
-          type: '12R 22.5',
-        },
-        {
-          name: 'Battery',
-          image: '/images/products/battery2.jpg',
-          brand: 'Auto-Battery',
-          type: 'Battery',
-        },
-        {
-          name: 'Battery',
-          image: '/images/products/battery2.jpg',
-          brand: 'Auto-Battery',
-          type: 'Battery',
-        },
-        {
-          name: 'Battery',
-          image: '/images/products/battery2.jpg',
-          brand: 'Auto-Battery',
-          type: 'Battery',
-        },
-    ]
+export default async function CategoriesPage() {
+  const products = await getCategoriesProducts("Power Train");
 
-    return (
-        <div className="w-[80%] py-2 md:py-5 overflow-scroll hide-scrollbar">
-            <div className="w-[100%] h-screen overflow-y-scroll hide-scrollbar">
-                {types.map((type, idx) => (
-                    <div key={idx} className='border-t border-grey pb-2'>
-                        <h2 className='font-semibold border-b border-grey py-1 px-2 md:px-5 mb-2'>{type}</h2>
-                        <div className="flex gap-2 md:gap-5 px-2 md:px-5 overflow-x-auto whitespace-nowrap hide-scrollbar">
-                            {products.map((product, ind) => (
-                                <CategoriesCard key={ind} name={product.name} image={product.image} type={product.type} />
-                            ))}
-                        </div>
-                    </div>
-                ))}
+  // group by type
+  const groupedByType = products.reduce((acc: Record<string, typeof products>, product) => {
+    if (!acc[product.type]) acc[product.type] = [];
+    acc[product.type].push(product);
+    return acc;
+  }, {});
+
+  const types = Object.keys(groupedByType);
+
+  return (
+    <div className="w-[80%] py-2 md:py-5 overflow-scroll hide-scrollbar">
+      <div className="w-[100%] h-screen overflow-y-scroll hide-scrollbar">
+        {types.length === 0 ? (
+          <NoItemsMessage />
+        ) : (
+          types.map((type) => (
+            <div key={type} className="border-t border-grey pb-2">
+              <h2 className="font-semibold border-b border-grey py-1 px-2 md:px-5 mb-2">
+                {type}
+              </h2>
+
+              <div className="flex gap-2 md:gap-5 px-2 md:px-5 overflow-x-auto whitespace-nowrap hide-scrollbar">
+                <Suspense
+                  fallback={Array.from({ length: 4 }).map((_, i) => (
+                    <CardSkeleton key={i} />
+                  ))}
+                >
+                  {groupedByType[type].length === 0 ? (
+                    <NoItemsMessage />
+                  ) : (
+                    groupedByType[type].map((product) => (
+                      <CategoriesCard
+                        key={product.id}
+                        name={product.name}
+                        image={product.imagePath}
+                        type={product.type}
+                      />
+                    ))
+                  )}
+                </Suspense>
+              </div>
             </div>
-        </div>
-    )
+          ))
+        )}
+      </div>
+    </div>
+  );
 }
