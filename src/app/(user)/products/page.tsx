@@ -3,7 +3,7 @@ import ProductCard from "./_components/ProductCard";
 import Pagination from "@/app/components/pagination";
 
 interface ProductsPageProps {
-  searchParams: { query?: string; page?: string };
+  searchParams: { query?: string | undefined; page?: string | undefined; };
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
