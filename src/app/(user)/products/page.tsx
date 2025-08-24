@@ -2,13 +2,13 @@ import prisma from "@/lib/prisma";
 import ProductCard from "./_components/ProductCard";
 import Pagination from "@/app/components/pagination";
 
-interface ProductsPageProps {
+type ProductsPageProps = {
   searchParams?: { query?: string; page?: string };
-}
+};
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
   const query = searchParams?.query ?? "";
-  const page = parseInt(searchParams?.page ?? "1", 10);
+  const page = Number(searchParams?.page ?? "1");
   const perPage = 30;
 
   // Prisma filtering (name, type, category)
@@ -20,7 +20,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         { category: { contains: query.toLowerCase() } },
       ],
     },
-    skip: (page - 1) * perPage,
+    skip: Math.max(0, (page - 1) * perPage),
     take: perPage,
   });
 
