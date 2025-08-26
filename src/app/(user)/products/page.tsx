@@ -18,9 +18,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const products = await prisma.product.findMany({
     where: {
       OR: [
-        { name: { contains: query } },
-        { type: { contains: query } },
-        { category: { contains: query } },
+        { name: { contains: query?.toLowerCase() || '', } },
+        { category: { contains: query?.toLowerCase() || '', } },
+        { type: { contains: query?.toLowerCase() || '', } },
       ],
     },
     skip: Math.max(0, (page - 1) * perPage),
@@ -30,9 +30,9 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
   const totalProducts = await prisma.product.count({
     where: {
       OR: [
-        { name: { contains: query } },
-        { type: { contains: query } },
-        { category: { contains: query } },
+        { name: { contains: query?.toLowerCase() || '', } },
+        { category: { contains: query?.toLowerCase() || '', } },
+        { type: { contains: query?.toLowerCase() || '', } },
       ],
     },
   });

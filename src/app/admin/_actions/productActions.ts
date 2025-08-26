@@ -2,9 +2,9 @@
 
 import prisma from "@/lib/prisma";
 import { z } from "zod";
-import fs from "fs/promises";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
+import cloudinary from "@/lib/cloudinary";
 
 const fileSchema = z
   .instanceof(File, { message: "File is required." })
@@ -42,19 +42,33 @@ export async function addProductAction(
 
   const data = result.data;
 
-  await fs.mkdir("public/products", { recursive: true });
-  const filePath = `/products/${crypto.randomUUID()}-${data.file.name}`;
-  await fs.writeFile(
-    `public${filePath}`,
-    Buffer.from(await data.file.arrayBuffer())
-  );
+  let imageUrl: string | null = null;
+  const file = data.file;
+
+  if (file) {
+    // Convert File -> Buffer
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = Buffer.from(arrayBuffer);
+
+    // Upload to Cloudinary
+    const uploadResponse = await new Promise<any>((resolve, reject) => {
+      cloudinary.uploader
+        .upload_stream({ folder: "products" }, (error, result) => {
+          if (error) reject(error);
+          else resolve(result);
+        })
+        .end(buffer);
+    });
+
+    imageUrl = uploadResponse.secure_url;
+  }
 
   await prisma.product.create({
     data: {
       name: data.name,
       category: data.category,
       type: data.type || "",
-      imagePath: filePath,
+      imagePath: imageUrl || "",
     },
   });
 
