@@ -52,7 +52,8 @@ export default function CartPage() {
     } finally {
         setLoading(false);
     }
-    };
+
+  };
 
   return (
     <div className="grid md:flex gap-6 p-2 md:p-5">
@@ -89,7 +90,7 @@ export default function CartPage() {
 
       {/* Form Section */}
       <div className="md:w-1/2 border rounded-lg shadow-sm p-6">
-        <h2 className="text-lg text-blue-ex font-semibold mb-4">Checkout Form</h2>
+        <h2 className="text-lg text-blue-ex font-semibold mb-4">{cart.length === 0 ? "Request for Quotation Form" : "Checkout Form"}</h2>
         <form onSubmit={handleCheckout} className="space-y-4 text-blue">
           <div>
             <label className="block text-sm mb-1">Name / Company Name</label>
@@ -125,7 +126,7 @@ export default function CartPage() {
             />
           </div>
           <div>
-            <label className="block text-sm mb-1">Additional Message (Optional)</label>
+            <label className="block text-sm mb-1">{cart.length === 0 ? "Add your request..." : "Additional Message (Optional)"}</label>
             <textarea
               name="message"
               value={formData.message}
@@ -139,7 +140,7 @@ export default function CartPage() {
             disabled={loading}
             className="w-full bg-blue text-white py-2 rounded-md hover:bg-blue-ex transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {loading ? "Sending..." : "Checkout"}
+            {loading ? "Sending..." : cart.length === 0 ? "Request" : "Checkout"}
           </button>
         </form>
       </div>

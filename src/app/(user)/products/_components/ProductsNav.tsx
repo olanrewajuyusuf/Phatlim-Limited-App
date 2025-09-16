@@ -40,6 +40,20 @@ export default function ProductsNav() {
 
       {/* Right side */}
       <div className="flex items-center gap-3 relative">
+        <Link
+          href="/products/cart"
+          className="hidden md:flex items-center flex-nowrap gap-2 border border-grey hover:bg-gray-100 rounded-2xl py-1 px-2 text-sm"
+        >
+          <span>Request for quotation</span>
+          <span className="border border-grey bg-grey rounded-sm p-1">📝</span>
+        </Link>
+        <Link
+          href="/products/cart"
+          className="md:hidden"
+        >
+          <span className="border border-grey bg-grey rounded-sm p-2">📝</span>
+        </Link>
+        
         {/* Search */}
         <Link
           href="/search-product"

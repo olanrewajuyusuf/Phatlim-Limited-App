@@ -34,7 +34,10 @@ export default async function Dashboard(props: {
 
   const totalProducts = await prisma.product.count({
     where: {
-      name: { contains: query?.toLowerCase() || "" },
+      name: { 
+        contains: query || "",
+        mode: "insensitive",
+      },
     },
   });
 

@@ -53,7 +53,7 @@ export default function ClientAbout() {
                 backgroundImage: 'linear-gradient(to right, #facc15, #ec4899)'
               }}
             >
-              Ventures
+              Limited
             </span>
           </motion.h2>
 

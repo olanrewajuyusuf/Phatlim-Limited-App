@@ -15,9 +15,9 @@ export default async function ProductsTable({
   const products = await prisma.product.findMany({
     where: {
       OR: [
-        { name: { contains: query?.toLowerCase() || '', } },
-        { category: { contains: query?.toLowerCase() || '', } },
-        { type: { contains: query?.toLowerCase() || '', } },
+        { name: { contains: query || '', mode: "insensitive", } },
+        { category: { contains: query || '', mode: "insensitive", } },
+        { type: { contains: query || '', mode: "insensitive", } },
       ],
     },
     skip: (currentPage - 1) * pageSize,

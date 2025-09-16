@@ -31,6 +31,11 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Menu close automatically when pathname changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
   return (
     <motion.nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${

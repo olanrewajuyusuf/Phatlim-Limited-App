@@ -57,7 +57,7 @@ export default function CategoriesCard({name, type, image} : CardTypes) {
                 </div>
 
                 <div className="md:hidden">
-                    <div className="flex justify-between items-start border-b border-white pb-2">
+                    <div className="flex justify-between items-start gap-2 flex-wrap border-b border-white pb-2">
                         <small className="bg-blue text-white px-2 rounded-sm">Type</small>
                         <small className="font-bold">{type}</small>
                     </div>

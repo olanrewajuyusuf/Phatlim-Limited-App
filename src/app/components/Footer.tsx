@@ -14,21 +14,39 @@ export default function Footer() {
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
       >
+        {/* Left side */}
         <div className="text-center md:text-left">
-          <div className='flex justify-center md:justify-start mb-5'><Link href='/'><Logo /></Link></div>
+          <div className="flex justify-center md:justify-start mb-5">
+            <Link href="/"><Logo /></Link>
+          </div>
           <p className="text-sm mt-2">Supplying premium truck parts across Africa.</p>
           <p className="text-sm mt-1">© {new Date().getFullYear()} All rights reserved.</p>
         </div>
 
-        <div className='text-center md:text-left'>
+        {/* Right side */}
+        <div className="text-center md:text-left">
           <div className="flex gap-6 text-sm">
             <Link href="/" className="hover:underline hover:text-brand-yellow transition">Home</Link>
             <Link href="/about" className="hover:underline hover:text-brand-yellow transition">About</Link>
             <Link href="/products" className="hover:underline hover:text-brand-yellow transition">Products</Link>
             <Link href="#contact" className="hover:underline hover:text-brand-yellow transition">Contact</Link>
           </div>
-          <span className='flex items-center justify-center md:justify-start gap-3 text-sm my-3.5'><Mail /> phatlimlimited@gmail.com</span>
-          <span className='flex items-center justify-center md:justify-start gap-3 text-sm'><Phone /> +234 703 551 2244</span>
+
+          {/* Email */}
+          <a
+            href="mailto:info@pllimited.ng"
+            className="flex items-center justify-center md:justify-start gap-3 text-sm my-3.5 hover:text-brand-yellow transition"
+          >
+            <Mail /> info@pllimited.ng
+          </a>
+
+          {/* Phone */}
+          <a
+            href="tel:+2347035512244"
+            className="flex items-center justify-center md:justify-start gap-3 text-sm hover:text-brand-yellow transition"
+          >
+            <Phone /> +234 703 551 2244
+          </a>
         </div>
       </motion.div>
     </footer>
