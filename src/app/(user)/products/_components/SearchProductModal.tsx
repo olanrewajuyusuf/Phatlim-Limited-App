@@ -2,9 +2,11 @@
 
 import { FiSearch } from "react-icons/fi";
 import { Clock } from "lucide-react";
+import { MdClose } from "react-icons/md";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { useState } from "react";
+import { useRef } from "react";
 
 type Product = {
   id: string;
@@ -13,10 +15,17 @@ type Product = {
   type: string;
 };
 
-export default function SearchProduct() {
+export default function SearchProductModal({ setSearchOpen }: { setSearchOpen: (open: boolean) => void }) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const modalRef = useRef<HTMLDivElement>(null);
+  
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+      setSearchOpen(false);
+    }
+  };
 
   const [results, setResults] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
@@ -47,8 +56,23 @@ export default function SearchProduct() {
   };
 
   return (
-    <div className="h-screen bg-white grid place-items-center">
-      <div className="w-full max-w-[700px] h-[calc(100vh-100px)] md:h-[calc(100vh-150px)] md:bg-grey rounded-lg p-5">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(0,0,0,0.5)] backdrop-blur-sm px-7"
+      onClick={handleBackdropClick}
+    >
+      <div className="w-full max-w-md max-h-[500px]">
+      <button
+        onClick={() => setSearchOpen(false)}
+        className="text-white text-4xl hover:text-gray-50 cursor-pointer "
+      >
+        <MdClose size={20} />
+      </button>
+      {/* Modal Card */}
+      <div
+        ref={modalRef}
+        className="bg-white rounded-lg shadow-lg"
+        onClick={(e) => e.stopPropagation()} // prevent clicks inside from closing
+      >
         <form
           className="w-full"
           onSubmit={(e) => {
@@ -71,10 +95,10 @@ export default function SearchProduct() {
         </form>
 
         {/* Search results */}
-        {loading && <p className="mt-3 text-sm text-gray-500">Searching...</p>}
+        {loading && <p className="mt-3 text-sm text-gray-500 p-3">Searching...</p>}
 
         {!loading && results.length > 0 && (
-          <div className="bg-white mt-3 rounded-md p-3 max-h-[calc(100vh-250px)] overflow-y-scroll">
+          <div className="bg-white mt-3 rounded-md p-3 max-h-[400px] overflow-y-auto">
             <ul>
               {results.map((product) => (
                 <li
@@ -83,7 +107,7 @@ export default function SearchProduct() {
                   className="flex items-center gap-2 text-grey-ex py-2 border-b border-grey-ex cursor-pointer hover:bg-gray-100"
                 >
                   <Clock />
-                  <span>{product.name} — {product.category} ({product.type})</span>
+                  <span className="w-[80%]">{product.name} — {product.category} ({product.type})</span>
                 </li>
               ))}
             </ul>
@@ -91,8 +115,9 @@ export default function SearchProduct() {
         )}
 
         {!loading && searchParams.get("query") && results.length === 0 && (
-          <p className="mt-3 text-sm text-gray-500">No matches found</p>
+          <p className="mt-3 text-sm text-gray-500 p-3">No match found</p>
         )}
+      </div>
       </div>
     </div>
   );
