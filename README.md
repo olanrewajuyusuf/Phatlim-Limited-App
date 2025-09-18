@@ -1,6 +1,6 @@
-# 🚛 Phatlim Ventures Website
+# 🚛 Phatlim Limited Website
 
-A modern, responsive web application for **Phatlim Ventures**, a company specializing in O.E.M and aftermarket spare parts for European, American, and Chinese trucks (Actros, Scania, Mark, M.A.N, Howo).
+A modern, responsive web application for **Phatlim Limited**, a company specializing in O.E.M and aftermarket spare parts for European, American, and Chinese trucks (Actros, Scania, Mark, M.A.N, Howo).
 
 The app showcases products, categories, and services with a clean UI/UX, provides customers with a **favorites & cart system**, and includes a **checkout/contact form** powered by Nodemailer for direct email notifications.
 
@@ -133,4 +133,4 @@ Then visit: http://localhost:3000
 
 ## 👨‍💻 Author
 
-Built with ❤️ by **Olanrewaju Yusuf for Phatlim Ventures**.
+Built with ❤️ by **Olanrewaju Yusuf for Phatlim Limited**.
