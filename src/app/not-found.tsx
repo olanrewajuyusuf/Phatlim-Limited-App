@@ -6,7 +6,7 @@ export default function NotFound() {
     const router = useRouter();
 
     return (
-        <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 text-center px-4">
+        <div className="h-full flex flex-col items-center justify-center bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 text-center px-4">
         {/* Error Code */}
         <h1 className="text-8xl font-extrabold text-gray-800 drop-shadow-sm">404</h1>
         

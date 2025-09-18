@@ -18,8 +18,12 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // ✅ Active check also works for sub-routes
   const isActive = (href: string) => {
-    return pathname === href;
+    if (href === '/') {
+      return pathname === '/'; // home only exact
+    }
+    return pathname.startsWith(href);
   };
 
   useEffect(() => {
@@ -50,6 +54,7 @@ export default function Navbar() {
           <Logo />
         </Link>
 
+        {/* Desktop nav */}
         <div className={`hidden md:flex gap-5 ${scrolled ? 'bg-none' : 'bg-blue border-2 border-blue-ex'} text-grey p-1 rounded-full`}>
           {navLinks.map((link) => (
             <Link
@@ -57,8 +62,8 @@ export default function Navbar() {
               href={link.href}
               className={`font-medium transition-colors hover:text-white hover:bg-blue-900 ${
                 isActive(link.href)
-                  ? 'bg-blue-ex px-6 py-2 rounded-full'
-                  : 'bg-blue px-6 py-2 rounded-full'
+                  ? 'bg-blue-ex px-6 py-2 rounded-full text-white'
+                  : 'bg-blue px-6 py-2 rounded-full text-grey'
               }`}
             >
               {link.label}
@@ -66,7 +71,8 @@ export default function Navbar() {
           ))}
         </div>
 
-        <div className={`relative group hidden md:block border-2 border-blue-ex p-3 rounded-full shadow-md hover:bg-blue-ex hover:border-blue transition ${pathname === '/contact' ? 'bg-blue-ex border-blue' : 'bg-blue'}`}>
+        {/* Contact Button */}
+        <div className={`relative group hidden md:block border-2 border-blue-ex p-3 rounded-full shadow-md hover:bg-blue-ex hover:border-blue transition ${pathname.startsWith('/contact') ? 'bg-blue-ex border-blue' : 'bg-blue'}`}>
           <Link
             href="/contact"
             className=" text-white text-2xl"
@@ -80,6 +86,7 @@ export default function Navbar() {
           </span>
         </div>
 
+        {/* Mobile menu toggle */}
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -103,14 +110,14 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className={`font-medium transition-colors hover:text-yellow-500 ${
-                isActive(link.href) ? 'text-yellow-300' : 'text-white'
+              className={`font-medium transition-colors ${
+                isActive(link.href) ? 'text-yellow-300' : 'text-white hover:text-yellow-500'
               }`}
             >
               {link.label}
             </Link>
           ))}
-          <Link href='/contact' className='text-white hover:text-yellow-500'>
+          <Link href='/contact' className={`${pathname.startsWith('/contact') ? 'text-yellow-300' : 'text-white hover:text-yellow-500'}`}>
             Contact
           </Link>
         </motion.div>

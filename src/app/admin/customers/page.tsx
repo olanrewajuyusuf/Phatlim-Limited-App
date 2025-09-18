@@ -1,12 +1,9 @@
-import Link from "next/link";
-import { BsPlus } from "react-icons/bs";
 import ProductsTable from "../_components/table";
-import Card from "../_components/Card";
 import Search from "../_components/search";
 import Pagination from "@/app/components/pagination";
 import prisma from "@/lib/prisma";
 import { Suspense } from "react";
-import { CardSkeleton, ProductsTableSkeleton } from "@/app/components/skeletons";
+import { ProductsTableSkeleton } from "@/app/components/skeletons";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import AdminNav from "../_components/AdminNav";
@@ -15,7 +12,7 @@ export const metadata = {
   title: "Admin-Dashboard",
 };
 
-export default async function Dashboard(props: {
+export default async function Customers(props: {
   searchParams?: Promise<{ query?: string; page?: string }>;
 }) {
   // ✅ Check cookie for user id
@@ -41,35 +38,16 @@ export default async function Dashboard(props: {
     },
   });
 
-  const totalCustomers = await prisma.customer.count();
+//   const totalCustomers = await prisma.customer.count();
   const totalPages = Math.ceil(totalProducts / pageSize);
 
   return (
     <div>
       <AdminNav />
       <div className="w-full max-w-[900px] mx-auto p-5">
-        <div className="grid grid-cols-2 gap-5 text-grey-ex text-lg">
-          <Suspense fallback={<CardSkeleton />}>
-            <Card title="All Products" amt={totalProducts} />
-          </Suspense>
-          <Suspense fallback={<CardSkeleton />}>
-            <Card title="All Customers" amt={totalCustomers} />
-          </Suspense>
-        </div>
         <div className="flex justify-between items-center gap-5 my-5">
-          <Search />
-
-          <Link href="/admin/add-product" className="w-[20%] hidden md:block">
-            <span className="flex justify-center items-center gap-1 px-2 py-2 rounded-md border border-blue text-white bg-blue hover:bg-grey hover:text-blue">
-              <BsPlus className="text-2xl" />
-              Add Product
-            </span>
-          </Link>
-          <Link href="/admin/add-product" className="md:hidden">
-            <span className="w-14 h-10 grid place-items-center rounded-md border border-blue text-white bg-blue hover:bg-grey hover:text-blue">
-              <BsPlus />
-            </span>
-          </Link>
+            <h1 className="text-2xl md:text-3xl">Customers</h1>
+            <Search />
         </div>
 
         <Suspense
