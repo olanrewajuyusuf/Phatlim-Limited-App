@@ -66,7 +66,7 @@ export default function CartPage() {
           <ul className="divide-y">
             {cart.map((item, idx) => (
               <li key={idx} className="flex justify-between items-end px-6 py-2 hover:bg-gray-100">
-                <div className="flex items-baseline-last gap-2 w-[200px]">
+                <div className="flex items-baseline-last flex-wrap gap-2 w-[200px] md:w-[300px]">
                   <Image src={item.image} alt={item.name} width={120} height={120} className="rounded-s-sm" />
                   <div>
                     <span className="truncate text-blue flex items-center gap-1 mb-1"><MdOutlineProductionQuantityLimits className="text-yellow-600" />{item.name}</span>

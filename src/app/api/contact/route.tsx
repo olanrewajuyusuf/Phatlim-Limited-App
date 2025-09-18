@@ -10,26 +10,69 @@ export async function POST(req: Request) {
 
   try {
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      // host: process.env.SMTP_HOST,
+      host: "smtp.gmail.com",
+      // port: Number(process.env.SMTP_PORT) || 465,
+      port: 465,
+      secure: true,
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_PASS,
+        // user: process.env.SMTP_USER,
+        user: "olanrewajuyusuf280@gmail.com",
+        // pass: process.env.SMTP_PASS,
+        pass: "fjdnfmbzbhkdbsrx",
       },
       tls: {
-            rejectUnauthorized: false,
-        },
+        rejectUnauthorized: false, // <--- allow self-signed certs
+      },
     });
 
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
-      to: process.env.GMAIL_USER,
-      subject: `New Message from ${name}`,
+      to: "olanrewajuyusuf280@gmail.com",
+      subject: `New Contact Message from ${name}`,
       html: `
-        <h3>Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Contact Form Submission</title>
+        </head>
+        <body style="margin:0; padding:0; font-family: Arial, Helvetica, sans-serif; background-color:#f5f7fa; color:#333;">
+          <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+            <tr>
+              <td align="center" style="padding: 30px 15px;">
+                <table width="100%" style="max-width: 600px; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                  <tr>
+                    <td style="background: linear-gradient(135deg, #2563eb, #1e40af); padding: 20px; text-align:center;">
+                      <h2 style="margin:0; color:#ffffff; font-size:22px; font-weight:bold;">📩 New Contact Form Message</h2>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 30px;">
+                      <p style="margin: 0 0 15px; font-size: 16px; line-height:1.6;">
+                        <span style="margin-right:8px;">👤</span> ${name}
+                      </p>
+                      <p style="margin: 0 0 15px; font-size: 16px; line-height:1.6;">
+                        <span style="margin-right:8px;">✉️</span> ${email}
+                      </p>
+                      <p style="margin: 0 0 15px; font-size: 16px; line-height:1.6;">
+                        <span style="margin-right:8px;">💬</span> ${message}
+                      </p>
+                      <hr style="margin: 25px 0; border: 0; border-top: 1px solid #e5e7eb;" />
+                      <p style="margin:0; font-size:14px; color:#6b7280; text-align:center;">
+                        This email was sent via <strong>Phatlim Limited website contact form</strong>.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </body>
+      </html>
+    `,
+
     });
 
     return NextResponse.json({ message: 'Message sent successfully' });

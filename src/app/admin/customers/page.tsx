@@ -1,4 +1,3 @@
-import ProductsTable from "../_components/table";
 import Search from "../_components/search";
 import Pagination from "@/app/components/pagination";
 import prisma from "@/lib/prisma";
@@ -7,9 +6,10 @@ import { ProductsTableSkeleton } from "@/app/components/skeletons";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import AdminNav from "../_components/AdminNav";
+import CustomersTable from "../_components/CustomerTable";
 
 export const metadata = {
-  title: "Admin-Dashboard",
+  title: "Admin-Customers",
 };
 
 export default async function Customers(props: {
@@ -29,7 +29,7 @@ export default async function Customers(props: {
 
   const pageSize = 10;
 
-  const totalProducts = await prisma.product.count({
+  const totalCustomers = await prisma.customer.count({
     where: {
       name: { 
         contains: query || "",
@@ -39,7 +39,7 @@ export default async function Customers(props: {
   });
 
 //   const totalCustomers = await prisma.customer.count();
-  const totalPages = Math.ceil(totalProducts / pageSize);
+  const totalPages = Math.ceil(totalCustomers / pageSize);
 
   return (
     <div>
@@ -54,7 +54,7 @@ export default async function Customers(props: {
           key={query + currentPage}
           fallback={<ProductsTableSkeleton />}
         >
-          <ProductsTable query={query} currentPage={currentPage} />
+          <CustomersTable query={query} currentPage={currentPage} />
         </Suspense>
 
         <div className="mt-5 flex w-full justify-center">
