@@ -95,7 +95,6 @@ yarn install
 Create a **.env.local** file in the root:
 
 ```env
-Copy code
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=465
 SMTP_USER=your-email@gmail.com
