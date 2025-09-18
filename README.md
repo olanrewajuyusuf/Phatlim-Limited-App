@@ -1,36 +1,136 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚛 Phatlim Ventures Website
 
-## Getting Started
+A modern, responsive web application for **Phatlim Ventures**, a company specializing in O.E.M and aftermarket spare parts for European, American, and Chinese trucks (Actros, Scania, Mark, M.A.N, Howo).
 
-First, run the development server:
+The app showcases products, categories, and services with a clean UI/UX, provides customers with a **favorites & cart system**, and includes a **checkout/contact form** powered by Nodemailer for direct email notifications.
+
+---
+
+## ✨ Features
+
+### 🖥️ Frontend
+
+- **Modern Landing Page**
+
+  - Beautiful hero section with carousel (5–6 product images).
+  - Responsive design across devices.
+  - Call-to-action buttons for exploring products and contacting the company.
+
+- **Products Page**
+
+  - Search bar to filter products by category, type, or name.
+  - Categories displayed as tabs:
+    - Power Train
+    - Brake System
+    - Fuel System
+    - Electrical System
+    - Cabin & Body Parts
+    - Steering & Suspension
+    - Tyres
+    - Rims
+    - Trailer Spares
+    - Others
+  - Subtabs under each category for quick navigation.
+  - Product grid with **Add-to-Cart** and **Favorite** icons.
+
+- **Favorites & Cart Modals**
+
+  - Accessible from the top navigation.
+  - Full-screen modal overlay with blur effect.
+  - Close button and smooth UI/UX.
+  - Items listed with images, names, and remove option.
+
+- **Contact / Checkout Form**
+  - Customers can enter **Name, Email, Phone, and Message**.
+  - Selected products are included in the email.
+  - Email design uses **icons (👤, ✉️, 📞, 💬)** for clarity.
+
+---
+
+### 📧 Backend / Functionality
+
+- **Nodemailer Integration**
+
+  - Sends form submissions to company email.
+  - Uses Gmail SMTP (secure port 465).
+  - Styled HTML emails with product details.
+  - Supports icons for a modern, branded look.
+
+- **Dynamic Routing & Navigation**
+  - Sidebar navigation detects active route & sub-routes.
+  - Hover and active link styles for smooth navigation.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js (App Router)
+- **Styling**: Tailwind CSS + modern responsive design
+- **State Management**: React Context API (for favorites & cart)
+- **Icons**: React Icons (Material, Lucide, etc.)
+- **Email Handling**: Nodemailer
+- **Deployment**: Vercel (recommended)
+
+---
+
+## 🚀 Getting Started
+
+### 1️⃣ Clone the repo
+
+```bash
+git clone https://github.com/your-username/phatlim-ventures.git
+cd phatlim-ventures
+```
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3️⃣ Setup environment variables
+
+Create a **.env.local** file in the root:
+
+```env
+Copy code
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=your-email@gmail.com
+SMTP_PASS=your-app-password
+```
+
+### 4️⃣ Run the dev server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then visit: http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📷 Screenshots (to add later)
 
-## Learn More
+- 🖥️ Landing Page
+- 📂 Product Categories
+- ❤️ Favorites Modal
+- 🛒 Cart Modal
+- 📧 Email Template
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📌 Roadmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Add admin dashboard for product management.
+- Support multiple email recipients.
+- Integrate database for products (e.g., Prisma + PostgreSQL).
+- Add payment gateway (Stripe/Flutterwave).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 👨‍💻 Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built with ❤️ by **Olanrewaju Yusuf for Phatlim Ventures**.
