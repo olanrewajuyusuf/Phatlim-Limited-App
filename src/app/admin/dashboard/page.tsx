@@ -9,7 +9,6 @@ import { Suspense } from "react";
 import { CardSkeleton, ProductsTableSkeleton } from "@/app/components/skeletons";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import AdminNav from "../_components/AdminNav";
 
 export const metadata = {
   title: "Admin-Dashboard",
@@ -46,7 +45,6 @@ export default async function Dashboard(props: {
 
   return (
     <div>
-      <AdminNav />
       <div className="w-full max-w-[900px] mx-auto p-5">
         <div className="grid grid-cols-2 gap-5 text-grey-ex text-lg">
           <Suspense fallback={<CardSkeleton />}>

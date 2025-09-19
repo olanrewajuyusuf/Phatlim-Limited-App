@@ -2,7 +2,7 @@
 
 import { useTransition } from 'react'
 import { logout } from '../_actions/logout'
-import { LogOutIcon } from 'lucide-react'
+import { FaSignOutAlt } from 'react-icons/fa'
 
 export default function LogoutButton() {
   const [isPending, startTransition] = useTransition()
@@ -10,10 +10,11 @@ export default function LogoutButton() {
   return (
     <button
       onClick={() => startTransition(() => logout())}
-      className="bg-red-500 hover:bg-red-600 text-white p-1.5 rounded cursor-pointer"
       disabled={isPending}
+      className="w-full flex items-center gap-2 px-4 py-2 text-left hover:bg-gray-100 hover:text-red-500 text-gray-700"
     >
-        <LogOutIcon className="inline" />
+      <FaSignOutAlt className="text-red-500" />
+      Logout
     </button>
   )
 }
