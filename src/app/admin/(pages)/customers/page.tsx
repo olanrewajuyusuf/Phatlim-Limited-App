@@ -1,11 +1,11 @@
-import Search from "../_components/search";
 import Pagination from "@/app/components/pagination";
 import prisma from "@/lib/prisma";
 import { Suspense } from "react";
 import { ProductsTableSkeleton } from "@/app/components/skeletons";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import CustomersTable from "../_components/CustomerTable";
+import CustomersTable from "@/app/admin/_components/CustomerTable";
+import Search from "@/app/admin/_components/search";
 
 export const metadata = {
   title: "Admin-Customers",
