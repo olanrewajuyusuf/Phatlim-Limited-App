@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { BsPlus } from "react-icons/bs";
-import ProductsTable from "../_components/table";
-import Card from "../_components/Card";
-import Search from "../_components/search";
+import ProductsTable from "../../_components/table";
+import Card from "../../_components/Card";
+import Search from "../../_components/search";
 import Pagination from "@/app/components/pagination";
 import prisma from "@/lib/prisma";
 import { Suspense } from "react";
