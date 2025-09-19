@@ -1,4 +1,4 @@
-import ProductForm from "../_components/ProductForm";
+import ProductForm from "@/app/admin/_components/ProductForm";
 
 export default function AddProduct() {  
   return (
