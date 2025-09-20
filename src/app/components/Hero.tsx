@@ -9,7 +9,7 @@ export default function Hero() {
   const pathname = usePathname();
 
   return (
-    <section key={pathname} className="pt-20 md:pt-10">
+    <section key={pathname} className="pt-28 md:pt-16">
       <motion.div
         className="md:w-[70%] xl:w-[50%] mx-auto text-center text-blue md:pt-20"
         initial={{ opacity: 0, y: 50 }}
@@ -17,9 +17,9 @@ export default function Hero() {
         transition={{ duration: 0.6 }}
         viewport={{ once: false, amount: 0.1 }}
       >
-        <div className="flex-1 px-5">
+        <div className="flex-1 px-10">
           <motion.h1
-            className="text-5xl md:text-7xl"
+            className="text-5xl md:text-7xl font-bold"
             initial={{ x: 70, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}

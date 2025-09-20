@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Mail, Phone } from 'lucide-react';
-import Logo from './Logo';
+import FooterLogo from './FooterLogo';
 
 export default function Footer() {
   return (
@@ -17,7 +17,7 @@ export default function Footer() {
         {/* Left side */}
         <div className="text-center md:text-left">
           <div className="flex justify-center md:justify-start mb-5">
-            <Link href="/"><Logo /></Link>
+            <Link href="/"><FooterLogo /></Link>
           </div>
           <p className="text-sm mt-2">Supplying premium truck parts across Africa.</p>
           <p className="text-sm mt-1">© {new Date().getFullYear()} All rights reserved.</p>

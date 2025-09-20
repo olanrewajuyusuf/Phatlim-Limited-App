@@ -49,7 +49,7 @@ export default function Navbar() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className={`${scrolled ? 'max-w-5xl' : 'max-w-2xl'} mx-auto px-7 py-3 flex justify-between items-center`}>
+      <div className={`${scrolled ? 'max-w-5xl' : 'max-w-3xl'} mx-auto px-7 py-3 flex justify-between items-center`}>
         <Link href="/">
           <Logo />
         </Link>
@@ -92,7 +92,7 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             className="text-blue-950 focus:outline-none cursor-pointer"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={30} /> : <Menu size={30} />}
           </button>
         </div>
       </div>
