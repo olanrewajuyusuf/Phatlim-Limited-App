@@ -19,7 +19,7 @@ export default function Logo() {
                 className="md:hidden"
             />
         </div>
-        <div className="text-blue pt-1 md:pt-0.5">
+        <div className="text-blue pt-0.5">
             <h1
             className='text-sm md:text-[16px] font-bold rounded-md'
             >PHATLIM</h1>

@@ -40,17 +40,17 @@ export default function AdminNav() {
         </Link>
 
         {/* Links */}
-        <ul className="flex items-center gap-5 text-lg">
+        <ul className="flex items-center gap-2 md:gap-5 text-lg">
           {links.map((link) => {
             const isActive = pathname === link.href;
             return (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`flex items-center gap-1 px-3 py-1 rounded-md transition-colors duration-200 ${
+                  className={`flex items-center gap-1 px-3 py-2 rounded-md transition-colors duration-200 ${
                     isActive
                       ? "bg-blue text-white shadow-sm"
-                      : "text-grey-ex hover:bg-gray-100 hover:text-blue-600"
+                      : "text-grey-ex bg-gray-100 hover:bg-grey hover:text-blue-600"
                   }`}
                 >
                   <span className="hidden md:block">{link.label}</span>
