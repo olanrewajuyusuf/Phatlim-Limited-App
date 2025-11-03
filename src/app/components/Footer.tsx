@@ -6,7 +6,7 @@ import FooterLogo from './FooterLogo';
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-ex text-gray-300 py-10 px-4 lg:px-20 xl:px-40">
+    <footer className="bg-blue-ex/95 text-gray-400 py-10 px-4 lg:px-20 xl:px-40">
       <motion.div
         className="max-w-7xl mx-auto flex flex-col justify-center items-center md:flex-row md:justify-between md:items-start gap-6"
         initial={{ opacity: 0, y: 30 }}
@@ -20,12 +20,12 @@ export default function Footer() {
             <Link href="/"><FooterLogo /></Link>
           </div>
           <p className="text-sm mt-2">Supplying premium truck parts across Africa.</p>
-          <p className="text-sm mt-1">© {new Date().getFullYear()} All rights reserved.</p>
+          <p className="text-sm mt-2">4, Ibrahim Jack street, Egbe, Lagos, Nigeria</p>
         </div>
 
         {/* Right side */}
         <div className="text-center md:text-left">
-          <div className="flex gap-6 text-sm">
+          <div className="flex gap-6 text-sm text-gray-300">
             <Link href="/" className="hover:underline hover:text-brand-yellow transition">Home</Link>
             <Link href="/about" className="hover:underline hover:text-brand-yellow transition">About</Link>
             <Link href="/products" className="hover:underline hover:text-brand-yellow transition">Products</Link>
@@ -49,6 +49,10 @@ export default function Footer() {
           </a>
         </div>
       </motion.div>
+      <div className='mt-10 text-center text-sm text-gray-400'>
+        <p>Copyrights © Phatlim Limited {new Date().getFullYear()} All rights reserved.</p>
+        <p><span className='text-gray-50'>Developed by</span> AstraGeo Technology Limited <span className='text-gray-300'>08069606791</span></p>
+      </div>
     </footer>
   );
 }

@@ -41,7 +41,7 @@ const products = [
 
 export default function ProductsPreview() {
   return (
-    <section className="py-20 bg-blue" id="products">
+    <section className="py-20 bg-blue/85" id="products">
       <div className="max-w-7xl mx-auto px-4 lg:px-20 xl:px-40">
         <div>
           <motion.button

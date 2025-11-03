@@ -10,16 +10,12 @@ export async function POST(req: Request) {
 
   try {
     const transporter = nodemailer.createTransport({
-      // host: process.env.SMTP_HOST,
-      host: "smtp.gmail.com",
-      // port: Number(process.env.SMTP_PORT) || 465,
+      host: process.env.SMTP_HOST,
       port: 465,
       secure: true,
       auth: {
-        // user: process.env.SMTP_USER,
-        user: "olanrewajuyusuf280@gmail.com",
-        // pass: process.env.SMTP_PASS,
-        pass: "fjdnfmbzbhkdbsrx",
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
       tls: {
         rejectUnauthorized: false, // <--- allow self-signed certs
@@ -28,7 +24,7 @@ export async function POST(req: Request) {
 
     await transporter.sendMail({
       from: `"${name}" <${email}>`,
-      to: "olanrewajuyusuf280@gmail.com",
+      to: process.env.SMTP_USER,
       subject: `New Contact Message from ${name}`,
       html: `
       <!DOCTYPE html>
