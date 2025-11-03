@@ -1,11 +1,17 @@
 import { Suspense } from "react";
 import CategoriesCard from "../../_components/CategoriesCard";
-import { getCategoriesProducts } from "@/app/_lib/data";
+// import { getCategoriesProducts } from "@/app/_lib/data";
 import NoItemsMessage from "../../_components/NoItemMessage";
 import CardSkeleton from "../../_components/CardSkeleton";
+import prisma from "@/lib/prisma";
 
 export default async function BrakeSystemPage() {
-  const products = await getCategoriesProducts("Brake System");
+  // const products = await getCategoriesProducts();
+  const products = await prisma.product.findMany({
+    where: { category: "Brake System" },
+    select: { id: true, name: true, type: true, imagePath: true },
+    orderBy: { type: "asc" },
+  });
 
   // group by type
   const groupedByType = products.reduce((acc: Record<string, typeof products>, product) => {
