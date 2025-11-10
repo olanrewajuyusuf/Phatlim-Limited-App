@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   const { name, email, message } = await req.json();
@@ -9,22 +11,23 @@ export async function POST(req: Request) {
   }
 
   try {
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false, // <--- allow self-signed certs
-      },
-    });
+    // const transporter = nodemailer.createTransport({
+    //   host: process.env.SMTP_HOST,
+    //   port: 465,
+    //   secure: true,
+    //   auth: {
+    //     user: process.env.SMTP_USER,
+    //     pass: process.env.SMTP_PASS,
+    //   },
+    //   tls: {
+    //     rejectUnauthorized: false, // <--- allow self-signed certs
+    //   },
+    // });
 
-    await transporter.sendMail({
+    await resend.emails.send({
       from: `"${name}" <${email}>`,
-      to: process.env.SMTP_USER,
+      to: "info@pllimited.ng",
+      replyTo: email, // reply directly to customer
       subject: `New Contact Message from ${name}`,
       html: `
       <!DOCTYPE html>
