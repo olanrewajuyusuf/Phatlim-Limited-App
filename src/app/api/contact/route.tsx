@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     // });
 
     await resend.emails.send({
-      from: `"${name}" <${email}>`,
+      from: "Phatlim Limited <noreply@pllimited.ng>",
       to: "info@pllimited.ng",
       replyTo: email, // reply directly to customer
       subject: `New Contact Message from ${name}`,
