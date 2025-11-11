@@ -177,8 +177,8 @@ export async function POST(req: Request) {
 
     const header = cart.length === 0 ? "📝 New Quotation Request" : "🛒 New Checkout Request";
     const subject = cart.length === 0
-      ? `📝 Quotation Request from ${name}`
-      : `🛒 Checkout Request from ${name}`;
+      ? `📝 Quotation Request from ${name} - BGCakgWTaQ`
+      : `🛒 Checkout Request from ${name} - BGCakgWTaQ`;
 
     const items = cart.length === 0 ? "" : `
       <h3 style="margin-top:20px;">Cart Items</h3>
@@ -239,7 +239,7 @@ export async function POST(req: Request) {
 
     // ✅ Send using Resend
     await resend.emails.send({
-      from: "Phatlim Limited <noreply@pllimited.ng>",
+      from: "Phatlim Limited <info@pllimited.ng>",
       to: "info@pllimited.ng",
       replyTo: email, // reply directly to customer
       subject,
