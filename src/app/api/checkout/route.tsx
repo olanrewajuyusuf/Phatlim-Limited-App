@@ -177,8 +177,8 @@ export async function POST(req: Request) {
 
     const header = cart.length === 0 ? "📝 New Quotation Request" : "🛒 New Checkout Request";
     const subject = cart.length === 0
-      ? `📝 Quotation Request from ${name} - BGCakgWTaQ`
-      : `🛒 Checkout Request from ${name} - BGCakgWTaQ`;
+      ? `📝 Quotation Request from ${name}`
+      : `🛒 Checkout Request from ${name}`;
 
     const items = cart.length === 0 ? "" : `
       <h3 style="margin-top:20px;">Cart Items</h3>
