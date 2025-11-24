@@ -36,6 +36,7 @@ export default function Contact() {
         toast.error(result.message || 'Something went wrong');
       }
     } catch (error) {
+      console.error("Contact error:", error);
       toast.error('Failed to send message. Please try again.');
     } finally {
       setLoading(false);

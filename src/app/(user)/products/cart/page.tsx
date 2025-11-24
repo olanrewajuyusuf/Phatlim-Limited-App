@@ -52,6 +52,7 @@ export default function CartPage() {
           toast.error(data.error || "Something went wrong");
         }
     } catch (error) {
+        console.error("Checkout error:", error);
         toast.error("Failed to send checkout request");
     } finally {
         setLoading(false);
