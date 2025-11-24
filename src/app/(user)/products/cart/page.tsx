@@ -6,7 +6,7 @@ import { useStore } from "@/app/context/StoreContext";
 import { MdDelete, MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { toast } from "sonner";
 import { VscTypeHierarchySub } from "react-icons/vsc";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function CartPage() {
   const { cart, removeFromCart, clearCart } = useStore();
