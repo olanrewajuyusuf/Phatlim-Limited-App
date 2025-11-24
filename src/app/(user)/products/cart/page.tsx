@@ -6,9 +6,10 @@ import { useStore } from "@/app/context/StoreContext";
 import { MdDelete, MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { toast } from "sonner";
 import { VscTypeHierarchySub } from "react-icons/vsc";
+import { useRouter } from "next/router";
 
 export default function CartPage() {
-  const { cart, removeFromCart } = useStore();
+  const { cart, removeFromCart, clearCart } = useStore();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -16,6 +17,7 @@ export default function CartPage() {
     message: "",
   });
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -42,10 +44,12 @@ export default function CartPage() {
         const data = await res.json();
 
         if (data.success) {
-        toast.success("Checkout request sent successfully!");
-        setFormData({ name: "", email: "", phone: "", message: "" }); // ✅ reset form properly
+          setFormData({ name: "", email: "", phone: "", message: "" }); // ✅ reset form properly
+          clearCart(); // ✅ clear cart after successful checkout request
+          router.back();
+          toast.success("Checkout request sent successfully!");
         } else {
-        toast.error(data.error || "Something went wrong");
+          toast.error(data.error || "Something went wrong");
         }
     } catch (error) {
         toast.error("Failed to send checkout request");

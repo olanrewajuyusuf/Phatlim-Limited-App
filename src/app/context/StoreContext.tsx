@@ -15,6 +15,7 @@ type StoreContextType = {
   removeFromCart: (productName: string) => void; // ✅ Added
   toggleFavorite: (product: Product) => void;
   removeFavorite: (productName: string) => void;
+  clearCart: () => void;
 };
 
 const StoreContext = createContext<StoreContextType | undefined>(undefined);
@@ -29,6 +30,10 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
 
   const removeFromCart = (productName: string) => {
     setCart((prev) => prev.filter((item) => item.name !== productName));
+  };
+
+  const clearCart = () => {
+    setCart([]);
   };
 
   const toggleFavorite = (product: Product) => {
@@ -55,6 +60,7 @@ export const StoreProvider = ({ children }: { children: ReactNode }) => {
         removeFromCart, // ✅ Now exposed
         toggleFavorite,
         removeFavorite,
+        clearCart
       }}
     >
       {children}
